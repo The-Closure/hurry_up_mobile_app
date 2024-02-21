@@ -4,6 +4,7 @@ import 'package:riide/core/domain/model/error_model.dart';
 import 'package:riide/core/domain/model/excption_model.dart';
 import 'package:riide/core/domain/model/model.dart';
 import 'package:riide/core/domain/model/response_model/login.dart';
+import 'package:riide/core/domain/model/token_model.dart';
 import 'package:riide/core/domain/service/post_Service/login_service.dart';
 
 part 'sign_in_event.dart';
@@ -13,8 +14,9 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc() : super(SignInInitial()) {
     on<Login>((event, emit) async {
       emit(LoadingToLogin());
-      Model temp = await LoginService().login(model: event.user);
-      if (temp is LoginModel) {
+      /*dynamic*/ Model temp = await LoginService().login(model: event.user);
+
+      if (temp is TokenModel /*String*/) {
         emit(SuccessInLogin());
       } else if (temp is ErrorModel) {
         emit(ErrorInLogin(error: temp));
