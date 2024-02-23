@@ -4,7 +4,7 @@ import 'package:riide/core/domain/model/error_model.dart';
 import 'package:riide/core/domain/model/excption_model.dart';
 import 'package:riide/core/domain/model/model.dart';
 import 'package:riide/core/domain/model/response_model/feedback.dart';
-import 'package:riide/core/domain/service/post_Service/feedback_service.dart';
+import 'package:riide/core/domain/service/post_service/feedback_service.dart';
 
 part 'feedback_event.dart';
 part 'feedback_state.dart';

@@ -4,7 +4,7 @@ import 'package:riide/core/domain/model/error_model.dart';
 import 'package:riide/core/domain/model/excption_model.dart';
 import 'package:riide/core/domain/model/model.dart';
 import 'package:riide/core/domain/model/response_model/register.dart';
-import 'package:riide/core/domain/service/post_Service/register_service.dart';
+import 'package:riide/core/domain/service/post_service/register_service.dart';
 
 part 'sign_up_event.dart';
 part 'sign_up_state.dart';

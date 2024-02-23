@@ -4,7 +4,7 @@ import 'package:riide/core/domain/model/error_model.dart';
 import 'package:riide/core/domain/model/excption_model.dart';
 import 'package:riide/core/domain/model/model.dart';
 import 'package:riide/core/domain/model/response_model/join_an_order.dart';
-import 'package:riide/core/domain/service/post_Service/join_order_service.dart';
+import 'package:riide/core/domain/service/post_service/join_order_service.dart';
 
 part 'join_order_event.dart';
 part 'join_order_state.dart';
