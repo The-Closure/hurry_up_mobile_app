@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:riide/core/config/observer.dart';
 
+
 void main() {
   Bloc.observer = MyBlocObserver();
   runApp(
