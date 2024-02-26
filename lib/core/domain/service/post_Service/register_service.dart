@@ -9,14 +9,16 @@ import 'package:riide/core/resources/url.dart';
 class RegisterService extends Service {
   Future<Model> signUp({required RegisterModel model}) async {
     try {
-      response =
-          await dio.post(Url().baseUrl + Url().registerUrl, data: model.toJson());
-      if (response.statusCode == 200) {
+      response = await dio.post(Url().baseUrl + Url().registerUrl,
+          data: model.toJson());
+
+      print(response);
+      if (response.statusCode == 201) {
         dynamic temp = response.data;
-        // RegisterModel result = RegisterModel.fromMap(temp);
-        TokenModel result = TokenModel(token: temp);
+
+        TokenModel result = TokenModel.fromMap(temp);
+        print(result);
         return result;
-        // return result;
       } else {
         return ErrorModel(error: response.statusMessage!);
       }

@@ -112,8 +112,7 @@ class SingInScreen extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 14,
                   ),
                   MainContainer(
-                    context: context,
-                    containerText: 'Sing in',
+                    containerText: 'Sign in',
                     onTap: () {
                       if (userNameController.text.isNotEmpty &&
                           passwordController.text.isNotEmpty) {

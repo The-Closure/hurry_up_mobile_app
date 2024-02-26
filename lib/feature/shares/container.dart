@@ -4,12 +4,10 @@ import 'package:riide/core/resources/color.dart';
 class MainContainer extends StatelessWidget {
   MainContainer(
       {Key? key,
-      required this.context,
       required this.containerText,
       required this.onTap})
       : super(key: key);
-  BuildContext context;
-  String containerText;
+    String containerText;
   void Function()? onTap;
 
   @override

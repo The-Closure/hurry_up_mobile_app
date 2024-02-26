@@ -12,18 +12,16 @@ class LoginService extends Service {
       response =
           await dio.post(Url().baseUrl + Url().loginUrl, data: model.toJson());
 
-      print(response);
-
       if (response.statusCode == 200) {
         dynamic temp = response.data;
-        TokenModel result = TokenModel(token: temp);
+        TokenModel result = TokenModel.fromMap(temp);
+
         return result;
-        //  LoginModel result = LoginModel.fromMap(temp);
-        // return temp['token'];
       } else {
         return ErrorModel(error: response.statusMessage!);
       }
     } catch (e) {
+      print(e.toString());
       return ExcptionModel(excption: e.toString());
     }
   }
