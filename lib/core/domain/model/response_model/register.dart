@@ -7,7 +7,7 @@ class RegisterModel extends Model {
   String email;
   String password;
   String gender;
-  DateTime birth;
+  String birth;
   String phone;
 
   RegisterModel({
@@ -24,7 +24,7 @@ class RegisterModel extends Model {
     String? email,
     String? password,
     String? gender,
-    DateTime? birth,
+    String? birth,
     String? phone,
   }) =>
       RegisterModel(
@@ -46,7 +46,7 @@ class RegisterModel extends Model {
         email: json["email"],
         password: json["password"],
         gender: json["gender"],
-        birth: DateTime.parse(json["birth"]),
+        birth: json["birth"],
         phone: json["phone"],
       );
 
@@ -55,8 +55,7 @@ class RegisterModel extends Model {
         "email": email,
         "password": password,
         "gender": gender,
-        "birth":
-            "${birth.year.toString().padLeft(4, '0')}-${birth.month.toString().padLeft(2, '0')}-${birth.day.toString().padLeft(2, '0')}",
+        "birth": birth,
         "phone": phone,
       };
 }

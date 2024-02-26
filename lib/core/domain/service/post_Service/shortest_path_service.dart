@@ -9,7 +9,7 @@ class ShortestPathService extends Service {
   Future<Model> createShortPath({required ShortestPathModel model}) async {
     try {
       response =
-          await dio.post(Url().url + Url().shortestPath, data: model.toJson());
+          await dio.post(Url().baseUrl + Url().shortestPath, data: model.toJson());
       if (response.statusCode == 200) {
         dynamic temp = response.data;
         // RegisterModel result = RegisterModel.fromMap(temp);

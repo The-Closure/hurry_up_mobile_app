@@ -8,8 +8,8 @@ import 'package:riide/feature/shares/container.dart';
 import 'package:riide/feature/shares/text_field.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-class SinginScreen extends StatelessWidget {
-  SinginScreen({super.key});
+class SingInScreen extends StatelessWidget {
+  SingInScreen({super.key});
 
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -18,7 +18,7 @@ class SinginScreen extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: FractionalOffset.topCenter,
           end: FractionalOffset.bottomCenter,

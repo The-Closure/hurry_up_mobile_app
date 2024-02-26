@@ -8,7 +8,8 @@ import 'package:riide/core/resources/url.dart';
 class OrdersService extends Service {
   Future<Model> createOrder({required OrdersModel model}) async {
     try {
-      response = await dio.post(Url().url + Url().orders, data: model.toJson());
+      response =
+          await dio.post(Url().baseUrl + Url().orders, data: model.toJson());
       if (response.statusCode == 200) {
         dynamic temp = response.data;
 

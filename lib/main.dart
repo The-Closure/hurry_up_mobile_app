@@ -7,8 +7,8 @@ import 'package:riide/feature/auth/sign_in/sign_in_screen.dart';
 void main() {
   Bloc.observer = MyBlocObserver();
   runApp(
-    BetterFeedback(
-      child: const MyApp(),
+    const BetterFeedback(
+      child: MyApp(),
     ),
   );
 }
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: SinginScreen(),
+      home: SingInScreen(),
     );
   }
 }
