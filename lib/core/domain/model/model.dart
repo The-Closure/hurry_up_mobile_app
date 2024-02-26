@@ -1,1 +1,1 @@
-abstract class Model {}
+abstract class TheFatherModel {}

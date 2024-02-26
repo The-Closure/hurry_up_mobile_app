@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:riide/core/domain/model/model.dart';
 
-class RegisterModel extends Model {
+class RegisterModel extends TheFatherModel {
   String name;
   String email;
   String password;

@@ -6,10 +6,10 @@ import 'package:riide/core/domain/service/service.dart';
 import 'package:riide/core/resources/url.dart';
 
 class RegisterService extends Service {
-  Future<Model> signUp({required RegisterModel model}) async {
+  Future<TheFatherModel> signUp({required RegisterModel model}) async {
     try {
       response =
-          await dio.post(Url().url + Url().registerUrl, data: model.toJson());
+          await dio.post(Url().baseUrl + Url().registerUrl, data: model.toJson());
       if (response.statusCode == 200) {
         dynamic temp = response.data;
         RegisterModel result = RegisterModel.fromMap(temp);

@@ -1,5 +1,6 @@
+
 class Url {
-  String url = "http://127.0.0.1:8000/api/";
+  String baseUrl = "https://render-qdcy.onrender.com/api/";
   String registerUrl = "register";
   String loginUrl = "login";
   String shortestPath = "shortest-path";

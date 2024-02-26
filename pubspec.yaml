@@ -41,6 +41,7 @@ dependencies:
   flutter_bloc: 
   flutter_secure_storage: 
   feedback: 
+  super_rich_text: ^1.0.0
 
 dev_dependencies:
   flutter_test:
