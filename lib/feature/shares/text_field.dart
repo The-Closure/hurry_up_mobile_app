@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:riide/core/resources/color.dart';
 
+// ignore: must_be_immutable
 class MainTextField extends StatelessWidget {
   MainTextField(
-      {Key? key,
+      {super.key,
       required this.context,
       required this.controller,
-      required this.labelText})
-      : super(key: key);
+      required this.labelText});
 
   BuildContext context;
   TextEditingController controller;
@@ -25,11 +25,11 @@ class MainTextField extends StatelessWidget {
         ),
       ),
       child: TextField(
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         controller: controller,
         decoration: InputDecoration(
           labelText: labelText,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
           ),

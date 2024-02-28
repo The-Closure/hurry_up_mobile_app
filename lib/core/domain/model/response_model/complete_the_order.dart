@@ -2,31 +2,35 @@ import 'dart:convert';
 
 import 'package:riide/core/domain/model/model.dart';
 
-class CompleteOrderModel extends Model {
-  int id;
+class CompleteOrderModel extends Model{
+    int? id;
+    String? massage;
 
-  CompleteOrderModel({
-    required this.id,
-  });
+    CompleteOrderModel({
+        this.id,
+        this.massage,
+    });
 
-  CompleteOrderModel copyWith({
-    int? id,
-  }) =>
-      CompleteOrderModel(
-        id: id ?? this.id,
-      );
+    CompleteOrderModel copyWith({
+        int? id,
+        String? massage,
+    }) => 
+        CompleteOrderModel(
+            id: id ?? this.id,
+            massage: massage ?? this.massage,
+        );
 
-  factory CompleteOrderModel.fromJson(String str) =>
-      CompleteOrderModel.fromMap(json.decode(str));
+    factory CompleteOrderModel.fromJson(String str) => CompleteOrderModel.fromMap(json.decode(str));
 
-  String toJson() => json.encode(toMap());
+    String toJson() => json.encode(toMap());
 
-  factory CompleteOrderModel.fromMap(Map<String, dynamic> json) =>
-      CompleteOrderModel(
+    factory CompleteOrderModel.fromMap(Map<String, dynamic> json) => CompleteOrderModel(
         id: json["id"],
-      );
+        massage: json["massage"],
+    );
 
-  Map<String, dynamic> toMap() => {
+    Map<String, dynamic> toMap() => {
         "id": id,
-      };
+        "massage": massage,
+    };
 }

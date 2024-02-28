@@ -8,8 +8,8 @@ import 'package:riide/core/resources/url.dart';
 class FeedbackService extends Service {
   Future<Model> feedback({required FeedbackModel model}) async {
     try {
-      response =
-          await dio.post(Url().baseUrl + Url().feedback, data: model.toJson());
+      response = await dio.post(Url().baseUrl + Url().feedback,
+          data: model.toJson(), options: options);
 
       print(response);
 

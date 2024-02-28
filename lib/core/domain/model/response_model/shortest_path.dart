@@ -36,3 +36,11 @@ class ShortestPathModel extends Model {
         "target_name": targetName,
       };
 }
+
+class ShortPathRespunseModel extends Model {
+  List<int> shortPath;
+
+  ShortPathRespunseModel({
+    required this.shortPath,
+  });
+}

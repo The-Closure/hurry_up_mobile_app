@@ -8,14 +8,13 @@ import 'package:riide/core/resources/url.dart';
 class ShortestPathService extends Service {
   Future<Model> createShortPath({required ShortestPathModel model}) async {
     try {
-      response =
-          await dio.post(Url().baseUrl + Url().shortestPath, data: model.toJson());
+      response = await dio.post(Url().baseUrl + Url().shortestPath,
+          data: model.toJson(), options: options);
       if (response.statusCode == 200) {
         dynamic temp = response.data;
-        // RegisterModel result = RegisterModel.fromMap(temp);
-        ShortestPathModel result = ShortestPathModel.fromMap(temp);
+
+        ShortPathRespunseModel result = ShortPathRespunseModel(shortPath: temp);
         return result;
-        // return result;
       } else {
         return ErrorModel(error: response.statusMessage!);
       }

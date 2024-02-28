@@ -13,7 +13,7 @@ class JoinOrderBloc extends Bloc<JoinOrderEvent, JoinOrderState> {
   JoinOrderBloc() : super(JoinOrderInitial()) {
     on<JoinToOrder>((event, emit) async {
       emit(LoadingToJoinOrder());
-      Model temp = await JoinOrderService().Join(model: event.joinOrder);
+      Model temp = await JoinOrderService().join(model: event.joinOrder);
       if (temp is JoinOrderModel) {
         emit(SuccessJoinOrder());
       } else if (temp is ErrorModel) {

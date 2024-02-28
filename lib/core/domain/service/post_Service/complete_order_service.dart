@@ -9,7 +9,7 @@ class CompleteOrderService extends Service {
   Future<Model> complete({required CompleteOrderModel model}) async {
     try {
       response = await dio.post(Url().baseUrl + Url().completeTheOrder,
-          data: model.toJson());
+          data: model.toJson(), options: options);
 
       print(response);
 

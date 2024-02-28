@@ -18,6 +18,8 @@ class SignUpScreen extends StatelessWidget {
   String gender = 'Male';
   String birthDay = '1999-11-7';
 
+
+
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -2,40 +2,34 @@ import 'dart:convert';
 
 import 'package:riide/core/domain/model/model.dart';
 
-class JoinOrderModel extends Model {
-  int? orderId;
-  int? numOfPeople;
-  int? id;
-  String? userIds;
-  int? topPassengerCount;
-  int? currentPassengerCount;
-  int? destinationVerticesId;
+class PendingAndHistoryModel extends Model {
+  int id;
+  String userIds;
+  int topPassengerCount;
+  int currentPassengerCount;
+  int destinationVerticesId;
   dynamic estimatedPrice;
-  bool? isHurry;
-  String? status;
-  String? genders;
-  DateTime? createdAt;
-  DateTime? updatedAt;
+  bool isHurry;
+  String status;
+  String genders;
+  DateTime createdAt;
+  DateTime updatedAt;
 
-  JoinOrderModel({
-    this.orderId,
-    this.numOfPeople,
-    this.id,
-    this.userIds,
-    this.topPassengerCount,
-    this.currentPassengerCount,
-    this.destinationVerticesId,
-    this.estimatedPrice,
-    this.isHurry,
-    this.status,
-    this.genders,
-    this.createdAt,
-    this.updatedAt,
+  PendingAndHistoryModel({
+    required this.id,
+    required this.userIds,
+    required this.topPassengerCount,
+    required this.currentPassengerCount,
+    required this.destinationVerticesId,
+    required this.estimatedPrice,
+    required this.isHurry,
+    required this.status,
+    required this.genders,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
-  JoinOrderModel copyWith({
-    int? orderId,
-    int? numOfPeople,
+  PendingAndHistoryModel copyWith({
     int? id,
     String? userIds,
     int? topPassengerCount,
@@ -48,9 +42,7 @@ class JoinOrderModel extends Model {
     DateTime? createdAt,
     DateTime? updatedAt,
   }) =>
-      JoinOrderModel(
-        orderId: orderId ?? this.orderId,
-        numOfPeople: numOfPeople ?? this.numOfPeople,
+      PendingAndHistoryModel(
         id: id ?? this.id,
         userIds: userIds ?? this.userIds,
         topPassengerCount: topPassengerCount ?? this.topPassengerCount,
@@ -66,14 +58,13 @@ class JoinOrderModel extends Model {
         updatedAt: updatedAt ?? this.updatedAt,
       );
 
-  factory JoinOrderModel.fromJson(String str) =>
-      JoinOrderModel.fromMap(json.decode(str));
+  factory PendingAndHistoryModel.fromJson(String str) =>
+      PendingAndHistoryModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory JoinOrderModel.fromMap(Map<String, dynamic> json) => JoinOrderModel(
-        orderId: json["order_id"],
-        numOfPeople: json["num_of_people"],
+  factory PendingAndHistoryModel.fromMap(Map<String, dynamic> json) =>
+      PendingAndHistoryModel(
         id: json["id"],
         userIds: json["user_ids"],
         topPassengerCount: json["top_passenger_count"],
@@ -88,8 +79,6 @@ class JoinOrderModel extends Model {
       );
 
   Map<String, dynamic> toMap() => {
-        "order_id": orderId,
-        "num_of_people": numOfPeople,
         "id": id,
         "user_ids": userIds,
         "top_passenger_count": topPassengerCount,
@@ -99,7 +88,7 @@ class JoinOrderModel extends Model {
         "is_hurry": isHurry,
         "status": status,
         "genders": genders,
-        "created_at": createdAt!.toIso8601String(),
-        "updated_at": updatedAt!.toIso8601String(),
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
       };
 }

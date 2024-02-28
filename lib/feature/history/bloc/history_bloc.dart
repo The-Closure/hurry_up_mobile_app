@@ -4,7 +4,6 @@ import 'package:riide/core/domain/model/error_model.dart';
 import 'package:riide/core/domain/model/excption_model.dart';
 import 'package:riide/core/domain/model/list_model.dart';
 import 'package:riide/core/domain/model/model.dart';
-import 'package:riide/core/domain/model/request_model/history.dart';
 import 'package:riide/core/domain/service/get_service/history_service.dart';
 
 part 'history_event.dart';
