@@ -13,7 +13,8 @@ class DeleteOrderService extends Service {
 
       if (response.statusCode == 200) {
         dynamic temp = response.data;
-        DeleteOrderModel result = DeleteOrderModel.fromMap(temp);
+        DeleteOrderResponseModel result =
+            DeleteOrderResponseModel(deleteMassage: temp);
         return result;
       } else {
         return ErrorModel(error: response.statusMessage!);

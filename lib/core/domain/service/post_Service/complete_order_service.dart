@@ -15,7 +15,7 @@ class CompleteOrderService extends Service {
 
       if (response.statusCode == 200) {
         dynamic temp = response.data;
-        CompleteOrderModel result = CompleteOrderModel.fromMap(temp);
+        CompleteOrderResponseModel result = CompleteOrderResponseModel.fromMap(temp);
         return result;
       } else {
         return ErrorModel(error: response.statusMessage!);

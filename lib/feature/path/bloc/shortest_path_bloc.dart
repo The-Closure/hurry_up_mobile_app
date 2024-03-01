@@ -16,7 +16,7 @@ class ShortestPathBloc extends Bloc<ShortestPathEvent, ShortestPathState> {
       Model temp =
           await ShortestPathService().createShortPath(model: event.path);
 
-      if (temp is ShortestPathModel) {
+      if (temp is ShortPathRespunseModel) {
         emit(SuccessToCreatePath());
       } else if (temp is ErrorModel) {
         emit(

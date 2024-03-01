@@ -14,7 +14,7 @@ class FeedbackBloc extends Bloc<FeedbackEvent, FeedbackState> {
     on<GiveFeedback>((event, emit) async {
       emit(LoadingToFeedback());
       Model temp = await FeedbackService().feedback(model: event.feedback);
-      if (temp is FeedbackModel) {
+      if (temp is FeedbackResponseModel) {
         emit(SuccessFeedback());
       } else if (temp is ErrorModel) {
         emit(ErrorFeedback(error: temp));

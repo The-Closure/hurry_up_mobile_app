@@ -15,7 +15,7 @@ class DeleteOrderBloc extends Bloc<DeleteOrderEvent, DeleteOrderState> {
       emit(LoadingToDeleteOrder());
       Model temp =
           await DeleteOrderService().deleteTheOrder(model: event.theOrder);
-      if (temp is DeleteOrderModel) {
+      if (temp is DeleteOrderResponseModel) {
         emit(SuccessDeleteOrder());
       } else if (temp is ErrorModel) {
         emit(ErrorInDeleteOrder(error: temp));

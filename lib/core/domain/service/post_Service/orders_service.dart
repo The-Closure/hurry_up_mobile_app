@@ -17,7 +17,7 @@ class OrdersService extends Service {
       if (response.statusCode == 200) {
         dynamic temp = response.data;
 
-        OrdersModel result = OrdersModel.fromMap(temp);
+        OrdersResponseModel result = OrdersResponseModel.fromMap(temp);
         return result;
       } else {
         return ErrorModel(error: response.statusMessage!);

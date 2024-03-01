@@ -15,7 +15,7 @@ class FeedbackService extends Service {
 
       if (response.statusCode == 200) {
         dynamic temp = response.data;
-        FeedbackModel result = FeedbackModel.fromMap(temp);
+        FeedbackResponseModel result = FeedbackResponseModel.fromMap(temp);
         return result;
       } else {
         return ErrorModel(error: response.statusMessage!);

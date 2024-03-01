@@ -16,7 +16,7 @@ class CompleteOrderBloc extends Bloc<CompleteOrderEvent, CompleteOrderState> {
 
       Model temp = await CompleteOrderService().complete(model: event.complete);
 
-      if (temp is CompleteOrderModel) {
+      if (temp is CompleteOrderResponseModel) {
         emit(SuccessCompleteOrder());
       } else if (temp is ErrorModel) {
         emit(ErrorINCompleteOrder(error: temp));

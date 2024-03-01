@@ -14,7 +14,7 @@ class CreateOrderBloc extends Bloc<CreateOrderEvent, CreateOrderState> {
     on<CreateNewOrder>((event, emit) async {
       emit(LoadingToCreateOrder());
       Model temp = await OrdersService().createOrder(model: event.order);
-      if (temp is OrdersModel) {
+      if (temp is OrdersResponseModel) {
         emit(SuccessInCreateOrder());
       } else if (temp is ErrorModel) {
         emit(ErrorInCreateOrder(error: temp));

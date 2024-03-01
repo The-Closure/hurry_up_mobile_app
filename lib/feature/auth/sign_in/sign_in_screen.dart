@@ -8,8 +8,8 @@ import 'package:riide/feature/shares/container.dart';
 import 'package:riide/feature/shares/text_field.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-class SingInScreen extends StatelessWidget {
-  SingInScreen({super.key});
+class SignInScreen extends StatelessWidget {
+  SignInScreen({super.key});
 
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -133,6 +133,7 @@ class SingInScreen extends StatelessWidget {
                       }
                     },
                   ),
+                  SizedBox(height: MediaQuery.of(context).size.height / 60),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -15,7 +15,7 @@ class JoinOrderService extends Service {
 
       if (response.statusCode == 200) {
         dynamic temp = response.data;
-        JoinOrderModel result = JoinOrderModel.fromMap(temp);
+        JoinOrderResponseModel result = JoinOrderResponseModel.fromMap(temp);
         return result;
       } else {
         return ErrorModel(error: response.statusMessage!);
