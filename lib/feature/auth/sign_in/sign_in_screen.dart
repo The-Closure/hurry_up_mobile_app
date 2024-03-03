@@ -4,6 +4,7 @@ import 'package:riide/core/domain/model/response_model/login.dart';
 import 'package:riide/core/resources/color.dart';
 import 'package:riide/feature/auth/sign_in/bloc/sign_in_bloc.dart';
 import 'package:riide/feature/auth/sign_up/sign_up_screen.dart';
+import 'package:riide/feature/screen/home_screen.dart';
 import 'package:riide/feature/shares/container.dart';
 import 'package:riide/feature/shares/text_field.dart';
 import 'package:super_rich_text/super_rich_text.dart';
@@ -44,12 +45,18 @@ class SignInScreen extends StatelessWidget {
                 ));
               }
               if (state is SuccessInLogin) {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  duration: Duration(seconds: 7),
-                  content: Text('Success in login'),
-                  backgroundColor: Colors.green,
-                  behavior: SnackBarBehavior.floating,
-                ));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    duration: Duration(seconds: 7),
+                    content: Text('Success in login'),
+                    backgroundColor: Colors.green,
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen()));
               }
               if (state is ErrorInLogin || state is ExcptionInLogin) {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -77,7 +84,7 @@ class SignInScreen extends StatelessWidget {
                       MarkerText(
                         marker: 'll',
                         style: TextStyle(
-                          color: MainColor().bottonColor,
+                          color: MainColor().appGreen,
                           fontSize: 60,
                           fontWeight: FontWeight.w900,
                         ),

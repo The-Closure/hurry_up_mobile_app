@@ -9,7 +9,7 @@ class DeleteOrderService extends Service {
   Future<Model> deleteTheOrder({required DeleteOrderModel model}) async {
     try {
       response = await dio.delete(Url().baseUrl + Url().deleteOrder,
-          data: model.toJson(), options: options);
+          data: model.toJson(),options: options);
 
       if (response.statusCode == 200) {
         dynamic temp = response.data;

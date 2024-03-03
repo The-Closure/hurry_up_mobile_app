@@ -6,7 +6,12 @@ sealed class CreateOrderState {}
 
 final class CreateOrderInitial extends CreateOrderState {}
 
-class SuccessInCreateOrder extends CreateOrderState {}
+class SuccessInCreateOrder extends CreateOrderState {
+  OrdersResponseModel order;
+  SuccessInCreateOrder({
+    required this.order,
+  });
+}
 
 class ErrorInCreateOrder extends CreateOrderState {
   ErrorModel error;

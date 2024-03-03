@@ -7,7 +7,7 @@ import 'package:riide/core/domain/service/service.dart';
 import 'package:riide/core/resources/url.dart';
 
 class HistoryService extends Service {
-  Future<Model>  getHistory() async {
+  getHistory() async {
     try {
       response = await dio.get(Url().baseUrl + Url().history, options: options);
 
@@ -22,7 +22,7 @@ class HistoryService extends Service {
         );
         ListModel history = ListModel(listOfModel: result);
 
-        return history;
+        return result;
       } else {
         return ErrorModel(error: response.statusMessage!);
       }

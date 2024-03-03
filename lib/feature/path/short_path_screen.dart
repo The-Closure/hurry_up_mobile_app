@@ -1,39 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:riide/core/domain/model/response_model/shortest_path.dart';
 import 'package:riide/core/domain/model/response_model/vertex.dart';
 import 'package:riide/core/resources/color.dart';
-import 'package:riide/feature/orders/join_order/join_order_screen.dart';
-import 'package:riide/feature/orders/pending_order/bloc/pending_order_bloc.dart';
+import 'package:riide/feature/path/bloc/shortest_path_bloc.dart';
+import 'package:riide/feature/path/result_path_screen.dart';
 import 'package:riide/feature/shares/container.dart';
 import 'package:riide/feature/shares/dialog.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-class PendingOrderScreen extends StatelessWidget {
+class ShortPathScreen extends StatelessWidget {
   final List<VertexModel> vertex;
-  const PendingOrderScreen({super.key, required this.vertex});
+  const ShortPathScreen({super.key, required this.vertex});
 
   @override
   Widget build(BuildContext context) {
-    late int orderIdSelact;
     return BlocProvider(
-      create: (context) => PendingOrderBloc(),
-      child: BlocConsumer<PendingOrderBloc, PendingOrderState>(
+      create: (context) => ShortestPathBloc(),
+      child: BlocConsumer<ShortestPathBloc, ShortestPathState>(
         listener: (context, state) {
-          if (state is SuccessPendingOrder) {
+          if (state is SuccessToCreatePath) {
+            final vertexName = BlocProvider.of<ShortestPathBloc>(context)
+                .getVertexResult(vertex: vertex, shortPath: state.shortestPath);
+            final vertexid = BlocProvider.of<ShortestPathBloc>(context)
+                .getVertexId(vertex: vertex, shortPath: state.shortestPath);
             Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => JoinOrderScreen(
-                  orderId: orderIdSelact,
-                  orders: state.pendingOrder,
-                  vertex: vertex,
-                ),
-              ),
-            );
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPathScreen(
+                    result: vertexName,
+                    node: vertexid,
+                  ),
+                ));
+          }
+          if (state is ErrorInCreatePath || state is ExcptionInCreatePath) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              duration: Duration(seconds: 5),
+              content: Text('Check Your Data'),
+              backgroundColor: Colors.red,
+              behavior: SnackBarBehavior.floating,
+            ));
           }
         },
         builder: (context, state) {
-          final bloc = BlocProvider.of<PendingOrderBloc>(context);
+          final bloc = BlocProvider.of<ShortestPathBloc>(context);
           return Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
@@ -58,7 +68,7 @@ class PendingOrderScreen extends StatelessWidget {
                       top: MediaQuery.of(context).size.height / 15,
                     ),
                     child: SuperRichText(
-                      text: 'rlliillde\n Join Order',
+                      text: 'rlliillde\n Shortest Path',
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Colors.white,
@@ -114,7 +124,6 @@ class PendingOrderScreen extends StatelessWidget {
                                           TextButton(
                                         onPressed: () {
                                           bloc.selectedSourceIndex = index;
-
                                           Navigator.pop(context);
                                         },
                                         child: Text(
@@ -131,24 +140,49 @@ class PendingOrderScreen extends StatelessWidget {
                                         TextStyle(color: MainColor().appGreen),
                                   ),
                                 ),
+                                TextButton(
+                                  onPressed: () {
+                                    dialog(
+                                      context: context,
+                                      vertex: vertex,
+                                      itemBuilder: (context, index) =>
+                                          TextButton(
+                                        onPressed: () {
+                                          bloc.selectedTargetIndex = index;
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          vertex[index].name,
+                                          style: TextStyle(
+                                              color: MainColor().appGreen),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Text(
+                                    'Select Your Destination',
+                                    style:
+                                        TextStyle(color: MainColor().appGreen),
+                                  ),
+                                ),
                               ],
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width / 2,
                               child: MainContainer(
-                                containerText: 'Show Me The Orders',
+                                containerText: 'Show The Shortest Path',
                                 onTap: () {
-                                  BlocProvider.of<PendingOrderBloc>(context)
+                                  print(vertex[bloc.selectedSourceIndex!].name);
+                                  BlocProvider.of<ShortestPathBloc>(context)
                                       .add(
-                                    Pending(
-                                      sourceId:
-                                          vertex[bloc.selectedSourceIndex!]
-                                              .id
-                                              .toString(),
+                                    CreateNewPath(
+                                      path: ShortestPathModel(
+                                          source_id:
+                                              '${vertex[bloc.selectedSourceIndex!].id}',
+                                          target_id:
+                                              '${vertex[bloc.selectedTargetIndex!].id}'),
                                     ),
                                   );
-                                  orderIdSelact =
-                                      vertex[bloc.selectedSourceIndex!].id;
                                 },
                               ),
                             ),
@@ -166,4 +200,3 @@ class PendingOrderScreen extends StatelessWidget {
     );
   }
 }
-

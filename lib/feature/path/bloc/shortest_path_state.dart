@@ -6,7 +6,10 @@ sealed class ShortestPathState {}
 
 final class ShortestPathInitial extends ShortestPathState {}
 
-class SuccessToCreatePath extends ShortestPathState {}
+class SuccessToCreatePath extends ShortestPathState {
+  ShortPathRespunseModel shortestPath;
+  SuccessToCreatePath({required this.shortestPath});
+}
 
 class ErrorInCreatePath extends ShortestPathState {
   ErrorModel error;

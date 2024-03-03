@@ -30,19 +30,18 @@ class CompleteOrderModel extends Model {
         "id": id,
       };
 }
-
 class CompleteOrderResponseModel extends Model{
-    String message;
+    String massage;
 
     CompleteOrderResponseModel({
-        required this.message,
+        required this.massage,
     });
 
     CompleteOrderResponseModel copyWith({
-        String? message,
+        String? massage,
     }) => 
         CompleteOrderResponseModel(
-            message: message ?? this.message,
+            massage: massage ?? this.massage,
         );
 
     factory CompleteOrderResponseModel.fromJson(String str) => CompleteOrderResponseModel.fromMap(json.decode(str));
@@ -50,11 +49,10 @@ class CompleteOrderResponseModel extends Model{
     String toJson() => json.encode(toMap());
 
     factory CompleteOrderResponseModel.fromMap(Map<String, dynamic> json) => CompleteOrderResponseModel(
-        message: json["message"],
+        massage: json["massage"],
     );
 
     Map<String, dynamic> toMap() => {
-        "message": message,
+        "massage": massage,
     };
 }
-

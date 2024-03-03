@@ -6,7 +6,12 @@ sealed class PendingOrderState {}
 
 final class PendingOrderInitial extends PendingOrderState {}
 
-class SuccessPendingOrder extends PendingOrderState {}
+class SuccessPendingOrder extends PendingOrderState {
+  List<PendingAndHistoryModel> pendingOrder;
+  SuccessPendingOrder({
+    required this.pendingOrder,
+  });
+}
 
 class ErrorInPendingOrder extends PendingOrderState {
   ErrorModel error;

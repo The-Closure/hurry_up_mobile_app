@@ -7,7 +7,7 @@ sealed class HistoryState {}
 final class HistoryInitial extends HistoryState {}
 
 class SuccessGetHistory extends HistoryState {
-  ListModel history;
+  List<PendingAndHistoryModel> history;
   SuccessGetHistory({required this.history});
 }
 

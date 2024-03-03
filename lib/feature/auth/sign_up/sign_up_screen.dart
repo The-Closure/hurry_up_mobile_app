@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:riide/core/domain/model/response_model/register.dart';
 import 'package:riide/core/resources/color.dart';
 import 'package:riide/feature/auth/sign_up/bloc/sign_up_bloc.dart';
+import 'package:riide/feature/screen/home_screen.dart';
 import 'package:riide/feature/shares/container.dart';
 import 'package:riide/feature/shares/text_field.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
+// ignore: must_be_immutable
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
 
@@ -17,8 +19,6 @@ class SignUpScreen extends StatelessWidget {
   TextEditingController phoneController = TextEditingController();
   String gender = 'Male';
   String birthDay = '1999-11-7';
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +58,12 @@ class SignUpScreen extends StatelessWidget {
                     backgroundColor: Colors.green,
                     behavior: SnackBarBehavior.floating,
                   ));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
                 }
                 if (state is ErrorInCreateAnAccount ||
                     state is ExcptionInCreateAnAccount) {
@@ -86,7 +92,7 @@ class SignUpScreen extends StatelessWidget {
                         MarkerText(
                           marker: 'll',
                           style: TextStyle(
-                            color: MainColor().bottonColor,
+                            color: MainColor().appGreen,
                             fontSize: 60,
                             fontWeight: FontWeight.w900,
                           ),
@@ -143,7 +149,7 @@ class SignUpScreen extends StatelessWidget {
                           width: MediaQuery.of(context).size.width / 1.8,
                           height: MediaQuery.of(context).size.height / 8,
                           decoration: ShapeDecoration(
-                            color: MainColor().bottonColor.withAlpha(255),
+                            color: MainColor().appGreen.withAlpha(255),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
                             ),
@@ -151,7 +157,7 @@ class SignUpScreen extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: CupertinoDatePicker(
-                              backgroundColor: MainColor().bottonColor,
+                              backgroundColor: MainColor().appGreen,
                               mode: CupertinoDatePickerMode.date,
                               initialDateTime: DateTime(1999, 11, 7),
                               onDateTimeChanged: (DateTime newDateTime) {
@@ -180,7 +186,7 @@ class SignUpScreen extends StatelessWidget {
                                     child: Text(
                                       'Male',
                                       style: TextStyle(
-                                          color: MainColor().bottonColor),
+                                          color: MainColor().appGreen),
                                     ),
                                   ),
                                   DropdownMenuItem<String>(
@@ -188,7 +194,7 @@ class SignUpScreen extends StatelessWidget {
                                     child: Text(
                                       'Female',
                                       style: TextStyle(
-                                          color: MainColor().bottonColor),
+                                          color: MainColor().appGreen),
                                     ),
                                   ),
                                 ],

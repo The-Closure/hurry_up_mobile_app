@@ -41,6 +41,8 @@ dependencies:
   super_rich_text: ^1.0.0
   shared_preferences: ^2.2.2
   flutter_native_splash: ^2.3.13
+  font_awesome_flutter: ^10.7.0
+  open_street_map_search_and_pick: ^0.1.1
 
 dev_dependencies:
   flutter_test:

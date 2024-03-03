@@ -2,30 +2,27 @@ import 'package:riide/core/domain/model/error_model.dart';
 import 'package:riide/core/domain/model/excption_model.dart';
 import 'package:riide/core/domain/model/list_model.dart';
 import 'package:riide/core/domain/model/model.dart';
-import 'package:riide/core/domain/model/request_model/pending_history_orders.dart';
+import 'package:riide/core/domain/model/response_model/busline.dart';
 import 'package:riide/core/domain/service/service.dart';
 import 'package:riide/core/resources/url.dart';
 
-class PendingOrderService extends Service {
-  pendingOrder({required String sourceVerticesId}) async {
+class BuslineService extends Service {
+  Future<Model> getHistoryBusline() async {
     try {
-      response = await dio.get(
-          Url().baseUrl +
-              Url().pendingOrders +
-              Url().pendingOrderId +
-              sourceVerticesId,
-          options: options);
+      response = await dio.get(Url().baseUrl + Url().admin + Url().busline);
+
+      print(response);
 
       if (response.statusCode == 200) {
         dynamic temp = response.data;
 
-        List<PendingAndHistoryModel> result = List.generate(
+        List<BuslineModel> result = List.generate(
           temp.length,
-          (index) => PendingAndHistoryModel.fromMap(temp[index]),
+          (index) => BuslineModel.fromMap(temp[index]),
         );
-        ListModel pending = ListModel(listOfModel: result);
+        ListModel busline = ListModel(listOfModel: result);
 
-        return result;
+        return busline;
       } else {
         return ErrorModel(error: response.statusMessage!);
       }

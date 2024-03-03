@@ -1,23 +1,28 @@
 import 'package:riide/core/domain/model/error_model.dart';
 import 'package:riide/core/domain/model/excption_model.dart';
-import 'package:riide/core/domain/model/model.dart';
-import 'package:riide/core/domain/model/response_model/shortest_path.dart';
+import 'package:riide/core/domain/model/list_model.dart';
+import 'package:riide/core/domain/model/response_model/vertex.dart';
 import 'package:riide/core/domain/service/service.dart';
 import 'package:riide/core/resources/url.dart';
 
-class ShortestPathService extends Service {
-  Future<Model> createShortPath({required ShortestPathModel model}) async {
+class GetVerticesService extends Service {
+  /*Future<Model>*/ getVertices() async {
     try {
-      response = await dio.post(Url().baseUrl + Url().shortestPath,
-          data: model.toJson(), options: options);
+      response = await dio.get(Url().baseUrl + Url().admin + Url().vertices);
+
       print(response);
+
       if (response.statusCode == 200) {
         dynamic temp = response.data;
 
-        ShortPathRespunseModel result = ShortPathRespunseModel(shortPath: temp);
+        List<VertexModel> result = List.generate(
+          temp.length,
+          (index) => VertexModel.fromMap(temp[index]),
+        );
+        ListModel vertex = ListModel(listOfModel: result);
+
         return result;
       } else {
-        print(response.statusMessage);
         return ErrorModel(error: response.statusMessage!);
       }
     } catch (e) {

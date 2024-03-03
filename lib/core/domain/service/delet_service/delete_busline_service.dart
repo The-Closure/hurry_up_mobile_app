@@ -1,21 +1,20 @@
 import 'package:riide/core/domain/model/error_model.dart';
 import 'package:riide/core/domain/model/excption_model.dart';
 import 'package:riide/core/domain/model/model.dart';
-import 'package:riide/core/domain/model/response_model/join_an_order.dart';
+import 'package:riide/core/domain/model/response_model/delete_busline.dart';
 import 'package:riide/core/domain/service/service.dart';
 import 'package:riide/core/resources/url.dart';
 
-class JoinOrderService extends Service {
-  Future<Model> join({required JoinOrderModel model}) async {
+class DeleteBuslineService extends Service {
+  Future<Model> deleteTheBusline({required DeleteBuslineModel model}) async {
     try {
-      response = await dio.post(Url().baseUrl + Url().joinAnOrder,
-          data: model.toJson(), options: options);
+      response = await dio.delete(Url().baseUrl + Url().admin + Url().busline,
+          data: model.toJson());
 
-      print(response);
-
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         dynamic temp = response.data;
-        JoinOrderResponseModel result = JoinOrderResponseModel.fromMap(temp);
+        DeleteBuslineResponseModel result =
+            DeleteBuslineResponseModel.fromMap(temp);
         return result;
       } else {
         return ErrorModel(error: response.statusMessage!);

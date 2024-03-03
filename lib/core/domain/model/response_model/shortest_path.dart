@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:riide/core/domain/model/model.dart';
 
 class ShortestPathModel extends Model {
-  String sourceName;
-  String targetName;
+  String source_id;
+  String target_id;
 
   ShortestPathModel({
-    required this.sourceName,
-    required this.targetName,
+    required this.source_id,
+    required this.target_id,
   });
 
   ShortestPathModel copyWith({
@@ -16,8 +16,8 @@ class ShortestPathModel extends Model {
     String? targetName,
   }) =>
       ShortestPathModel(
-        sourceName: sourceName ?? this.sourceName,
-        targetName: targetName ?? this.targetName,
+        source_id: sourceName ?? this.source_id,
+        target_id: targetName ?? this.target_id,
       );
 
   factory ShortestPathModel.fromJson(String str) =>
@@ -27,18 +27,18 @@ class ShortestPathModel extends Model {
 
   factory ShortestPathModel.fromMap(Map<String, dynamic> json) =>
       ShortestPathModel(
-        sourceName: json["source_name"],
-        targetName: json["target_name"],
+        source_id: json["source_id"],
+        target_id: json["target_id"],
       );
 
   Map<String, dynamic> toMap() => {
-        "source_name": sourceName,
-        "target_name": targetName,
+        "source_id": source_id,
+        "target_id": target_id,
       };
 }
 
 class ShortPathRespunseModel extends Model {
-  List<int> shortPath;
+  List<dynamic> shortPath;
 
   ShortPathRespunseModel({
     required this.shortPath,

@@ -6,9 +6,10 @@ abstract class Service {
   Dio dio = Dio();
   late Response response;
   Options options = Options(
-          headers: {
-            "authorization":
-                "Bearar ${config.get<SharedPreferences>().getString('token')}"
-          },
-        );
+    validateStatus: (status) => true,
+    headers: {
+      "authorization":
+          "Bearer ${config.get<SharedPreferences>().getString('token')}"
+    },
+  );
 }
